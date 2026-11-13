@@ -1,4 +1,5 @@
 import './style.css';
+import bannerUrl from './banner.webp';
 import { registerSW } from 'virtual:pwa-register';
 import { FESTIVAL_2027 as F, NIGHTS_2027, venueMidnight } from './data';
 
@@ -88,12 +89,18 @@ function render(root: HTMLElement): void {
   root.replaceChildren();
 
   const hero = el('header', 'hero');
-  const mark = el('span', 'hero-mark');
-  mark.setAttribute('role', 'img');
-  mark.setAttribute('aria-label', F.name);
+  // The festival's own 2027 poster, across the top. It already says the name,
+  // the year and the dates, so the type under it is the same words made
+  // readable at phone size rather than a second announcement.
+  const banner = el('img', 'hero-banner');
+  banner.src = bannerUrl;
+  banner.width = 1375;
+  banner.height = 805;
+  banner.alt =
+    'The 2027 poster: the Dark Bombastic Evening emblem on the candle-lit citadel wall, ' +
+    'with 12–14 August, RYMA, and a Peace and Love DBE flag above.';
   hero.append(
-    mark,
-    el('p', 'hero-kicker', 'Peace and Love · DBE'),
+    banner,
     el('h1', 'hero-title', F.name),
     el('p', 'hero-year', String(F.year)),
   );

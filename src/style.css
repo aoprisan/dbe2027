@@ -85,28 +85,19 @@ a:focus-visible {
 /* ---------- hero ---------- */
 .hero {
   text-align: center;
-  padding: max(36px, calc(env(safe-area-inset-top) + 20px)) 0 28px;
+  padding: 0 0 28px;
 }
 
-/* The emblem is white line art; masking it lets the page pour its own ink
-   through the lines instead of filtering a white image towards sepia. */
-.hero-mark {
+/* The poster runs edge to edge and burns out into the page at the bottom, so
+   the photograph and the background read as one sheet. */
+.hero-banner {
   display: block;
-  width: 132px;
-  height: 132px;
-  margin: 0 auto 14px;
-  background: linear-gradient(180deg, var(--text) 20%, var(--accent) 100%);
-  -webkit-mask: url('/logo.svg') center / contain no-repeat;
-  mask: url('/logo.svg') center / contain no-repeat;
-  filter: drop-shadow(0 0 14px rgb(240 162 74 / 0.35));
-}
-
-.hero-kicker {
-  margin: 0 0 10px;
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--muted);
+  width: calc(100% + 32px);
+  max-width: none;
+  height: auto;
+  margin: 0 -16px 18px;
+  -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
 }
 
 .hero-title {
